@@ -25,7 +25,7 @@ class SearchUserName extends Component {
         this.setState({
           username: githubResponse.data,
         });
-        console.log(this.state.user)
+        console.log(this.state.username)
       });
 
     axios
