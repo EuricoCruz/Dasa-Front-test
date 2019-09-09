@@ -54,11 +54,11 @@ class SearchUserName extends Component {
             <h1 className='title is-1 main-title'>Github Finder</h1>
           </div>
           <h3 className='instruction-title'>Como Utilizar:</h3>
-          <ul>
+          <ol>
             <li>Digite o nome de usuário que você deseja encontrar</li>
             <li>Clique em buscar</li>
             <li>Você receberá informações do perfil e dos repositórios deste usuário</li>
-          </ul>
+          </ol>
           <form onSubmit={e => this.handleSubmit(e)}>
             <div className= 'form-container'> 
 

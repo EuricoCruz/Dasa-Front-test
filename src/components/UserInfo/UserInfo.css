@@ -1,0 +1,7 @@
+.user-container {
+  border: 1px solid black !important;
+}
+
+.user-avatar {
+  border-radius: 20px;
+}

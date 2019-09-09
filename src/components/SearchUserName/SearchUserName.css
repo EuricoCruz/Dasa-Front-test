@@ -1,0 +1,62 @@
+.main-container {
+  font-family: sans-serif;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.main-title {
+  font-size: 6em !important;
+  color: black !important;
+}
+
+.github-mascot {
+  width: 250px;
+  height: 200px;
+  margin-left: 8em;
+}
+
+.header-content {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  background-color: #3C4145;
+  width: 100%;
+  padding: 50px;
+}
+
+.instruction-title {
+  text-align: center;
+  font-size: 2em;
+}
+
+.intructions {
+  display:flex;
+  flex-flow: column wrap; 
+} 
+
+.form-container {
+  display: flex !important;
+  flex-flow: row !important;
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 1.5em !important;
+  margin-right: 6px !important;
+}
+
+.button {
+  margin-left: 0.5em !important;
+}
+
+.search-result {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-around
+}
+
+ol {
+  margin-bottom: 10px !important;
+}
