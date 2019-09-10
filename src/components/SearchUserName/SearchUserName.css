@@ -52,7 +52,7 @@
 
 .search-result {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
   width: 100%;
   justify-content: space-around
 }

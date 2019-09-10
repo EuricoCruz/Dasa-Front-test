@@ -15,9 +15,17 @@ class SearchUserName extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
+  
   handleSubmit(event) {
     event.preventDefault();
+    
+    // axios
+    //   .get(`https://api.github.com/users/${this.state.user}`)
+    //   .then(githubResponse => {
+    //     this.setState({
+    //       username: githubResponse.data,
+    //     });
+    //   });
 
     axios
       .get(`https://api.github.com/users/${this.state.user}`)
@@ -25,7 +33,13 @@ class SearchUserName extends Component {
         this.setState({
           username: githubResponse.data,
         });
-        console.log(this.state.username)
+      })
+      .catch(error => {
+        this.setState({
+          showUser: false,
+          hasError: true,
+        })
+        console.log(this.state.hasError)
       });
 
     axios
@@ -38,7 +52,7 @@ class SearchUserName extends Component {
         console.log(this.state.repos)
       });
   }
-
+  
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -87,11 +101,11 @@ class SearchUserName extends Component {
           </div>
           <div className='instructions'>
           <h3 className='instruction-title'>Como Utilizar:</h3>
-            <ul>
+            <ol>
               <li>Digite o nome de usuário que você deseja encontrar</li>
               <li>Clique em buscar</li>
               <li>Você receberá informações do perfil e dos repositórios deste usuário</li>
-            </ul>
+            </ol>
           </div>
           <form onSubmit={e => this.handleSubmit(e)}>
             <div className='form-container'>
@@ -103,8 +117,8 @@ class SearchUserName extends Component {
               onChange={event => this.handleChange(event)}
             />
             <button type="submit" className="button is-link">Buscar</button>
-
             </div>
+            {this.state.hasError && <p>Usuário não existe</p>}
           </form>
         </div>
       );
