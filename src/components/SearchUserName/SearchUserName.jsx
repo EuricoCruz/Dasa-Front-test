@@ -29,7 +29,7 @@ class SearchUserName extends Component {
       });
 
     axios
-      .get(`https://api.github.com/users/${this.state.user}/repos`)
+      .get(`https://api.github.com/users/${this.state.user}/repos?page=1&per_page=100`)
       .then(githubResponse => {
         this.setState({
           repos: githubResponse.data,

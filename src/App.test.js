@@ -5,6 +5,7 @@ import SearchUserName from './components/SearchUserName/SearchUserName';
 import UserInfo from './components/UserInfo/UserInfo';
 import ShowRepos from './components/ShowRepo/ShowRepo';
 import RepoInfo from './components/RepoInfo/RepoInfo';
+import axios from 'axios'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -17,8 +18,6 @@ it('renders SearchUserName without crashing', () => {
   ReactDOM.render(<SearchUserName />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
-
-
 
 it('renders UserInfo with props without crashing', () => {
   const div = document.createElement('div');
@@ -56,3 +55,23 @@ it('renders ShowRepo without crashing', () => {
   ReactDOM.render(<ShowRepos repos={fakeRepos}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+it('renders ShowRepo without crashing', () => {
+  const div = document.createElement('div');
+  const fakeRepos = [{
+    html_url: 'this is a fake repo', 
+    name: '', 
+    startgazers_count: 0 
+    },
+    {
+      html_url: 'this is a fake repo', 
+      name: '', 
+      startgazers_count: 0 
+      }]
+  ReactDOM.render(<ShowRepos repos={fakeRepos}/>, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+it('result must be an object', () => {
+  const githubResponse = axios.get('https://api.github.com/users/EuricoCruz')
+  expect(typeof githubResponse).toBe('object');
+}) 
