@@ -1,5 +1,6 @@
 import React from 'react';
-import './RepoInfo.css'
+import './RepoInfo.css';
+import bulma from 'bulma'
 
 const RepoInfo = (props) => {
   return (

@@ -1,4 +1,27 @@
 .repo-table {
-  display: flex;
-  flex-flow: row wrap
+  display: grid; 
+  grid-template-columns: 200px 200px 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .repo-table {
+    grid-template-columns: 200px 200px
+  } 
+
+  .username {
+    font-size: 2em !important;
+  }
+}
+
+
+
+@media screen and (max-width: 320px) {
+  .repo-table {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .repo-title {
+    font-size: 1.5em !important;
+  }
 }

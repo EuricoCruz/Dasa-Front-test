@@ -18,15 +18,6 @@ class SearchUserName extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
-    
-    // axios
-    //   .get(`https://api.github.com/users/${this.state.user}`)
-    //   .then(githubResponse => {
-    //     this.setState({
-    //       username: githubResponse.data,
-    //     });
-    //   });
-
     axios
       .get(`https://api.github.com/users/${this.state.user}`)
       .then(githubResponse => {
@@ -49,7 +40,6 @@ class SearchUserName extends Component {
           repos: githubResponse.data,
           showUser: true,
         });
-        console.log(this.state.repos)
       });
   }
   
@@ -62,6 +52,8 @@ class SearchUserName extends Component {
   render() {
     if (this.state.showUser) {
       return (
+        <div>
+
         <div className='main-container'>
           <div className='header-content'>
             <img src={octocat} alt='github mascot' className='github-mascot'/>
@@ -75,7 +67,6 @@ class SearchUserName extends Component {
           </ol>
           <form onSubmit={e => this.handleSubmit(e)}>
             <div className= 'form-container'> 
-
             <label className='label'>Usuário:</label>
             <input className="input is-primary"
               type="text"
@@ -86,11 +77,16 @@ class SearchUserName extends Component {
             <button type="submit" className="button is-link">Buscar</button>
               </div>
           </form>
-          <div className='search-result'> 
-            <UserInfo user={this.state.username} />
-            <ShowRepo repos={this.state.repos} />
-          </div>
         </div>
+          <div className='search-result'> 
+            <div className='userInfo-container'>
+              <UserInfo user={this.state.username} />
+            </div> 
+            <div className='showRepo-container'> 
+              <ShowRepo repos={this.state.repos} />
+            </div>
+          </div>
+              </div>
       );
     } else {
       return (
@@ -99,14 +95,12 @@ class SearchUserName extends Component {
             <img src={octocat} alt='github mascot' className='github-mascot'/>
             <h1 className='title is-1 main-title'>Github Finder</h1>
           </div>
-          <div className='instructions'>
           <h3 className='instruction-title'>Como Utilizar:</h3>
             <ol>
               <li>Digite o nome de usuário que você deseja encontrar</li>
               <li>Clique em buscar</li>
               <li>Você receberá informações do perfil e dos repositórios deste usuário</li>
             </ol>
-          </div>
           <form onSubmit={e => this.handleSubmit(e)}>
             <div className='form-container'>
               <label className='label'>Usuário:</label>
@@ -118,7 +112,7 @@ class SearchUserName extends Component {
             />
             <button type="submit" className="button is-link">Buscar</button>
             </div>
-            {this.state.hasError && <p>Usuário não existe</p>}
+            {this.state.hasError && <p className='error-advice'>Este usuário não existe</p>}
           </form>
         </div>
       );
